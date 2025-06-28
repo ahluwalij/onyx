@@ -1703,7 +1703,7 @@ def document_indexing_pipeline_task(
                 index_pipeline_result.failures[-1],
             )
 
-        with get_session_with_current_tenant() as db_session:
+        with get_session_with_current_tenant() as db_session, cross_batch_db_lock:
             update_docs_indexed(
                 db_session=db_session,
                 index_attempt_id=index_attempt_id,
@@ -1742,12 +1742,11 @@ def document_indexing_pipeline_task(
             f"elapsed={elapsed_time:.2f}s"
         )
 
-    except Exception as e:
+    except Exception:
         task_logger.exception(
             f"Document batch processing failed: "
             f"batch_id={batch_id} "
             f"attempt={index_attempt_id} "
-            f"error={str(e)}"
         )
 
         # on failure, signal completion with an error to unblock the watchdog
