@@ -9,9 +9,9 @@ set +o allexport
 # Function to determine correct docker compose command
 docker_compose_cmd() {
   if command -v docker-compose >/dev/null 2>&1; then
-    echo "docker-compose"
+    echo "sudo docker-compose"
   elif command -v docker compose >/dev/null 2>&1; then
-    echo "docker compose"
+    echo "sudo docker compose"
   else
     echo 'Error: docker-compose or docker compose is not installed.' >&2
     exit 1
@@ -60,8 +60,8 @@ $COMPOSE_CMD -f docker-compose.prod.yml run  --name onyx-stack --rm --entrypoint
 echo
 
 
-echo "### Starting nginx ..."
-$COMPOSE_CMD -f docker-compose.prod.yml -p onyx-stack up --force-recreate -d nginx
+echo "### Starting all services ..."
+$COMPOSE_CMD -f docker-compose.prod.yml -p onyx-stack up --force-recreate -d
 echo
 
 echo "Waiting for nginx to be ready, this may take a minute..."
@@ -121,5 +121,5 @@ $COMPOSE_CMD -f docker-compose.prod.yml run --name onyx-stack --rm --entrypoint 
     fi; \
   done'" certbot
 
-echo "### Reloading nginx ..."
+echo "### Reloading all services ..."
 $COMPOSE_CMD -f docker-compose.prod.yml -p onyx-stack up --force-recreate -d
