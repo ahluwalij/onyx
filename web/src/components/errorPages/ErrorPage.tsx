@@ -10,14 +10,14 @@ export default function Error() {
       </h1>
       <div className="space-y-4 text-gray-600 dark:text-gray-300">
         <p>
-          It seems there was a problem loading your Onyx settings. This could be
+          It seems there was a problem loading your UniversalAGI settings. This could be
           due to a configuration issue or incomplete setup.
         </p>
         <p>
           If you&apos;re an admin, please review our{" "}
           <a
             className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-            href="https://docs.onyx.app/introduction?utm_source=app&utm_medium=error_page&utm_campaign=config_error"
+            href="https://universalagi.com"
             target="_blank"
             rel="noopener noreferrer"
           >

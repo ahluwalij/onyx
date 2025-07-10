@@ -57,9 +57,9 @@ export default function OpenEmbeddingPage({
         </a>
         .
         <br />
-        <b>NOTE:</b> not all models listed will work with Onyx, since some have
+        <b>NOTE:</b> not all models listed will work with UniversalAGI, since some have
         unique interfaces or special requirements. If in doubt, reach out to the
-        Onyx team.
+        UniversalAGI team.
       </Text>
       {!configureModel && (
         <Button
