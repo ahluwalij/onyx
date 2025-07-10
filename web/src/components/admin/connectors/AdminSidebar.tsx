@@ -32,7 +32,6 @@ export function AdminSidebar({ collections }: { collections: Collection[] }) {
         <div className="w-full ml-4  mt-1 h-8 justify-start mb-4 flex">
           <LogoComponent
             show={true}
-            enterpriseSettings={enterpriseSettings!}
             backgroundToggled={false}
             isAdmin={true}
           />
